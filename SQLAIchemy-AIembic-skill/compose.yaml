@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16.6
+    environment:
+      POSTGRES_DB: p29_lab
+      POSTGRES_USER: p29
+      POSTGRES_PASSWORD: p29_lab_password
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - p29_lab_data:/var/lib/postgresql/data
+
+volumes:
+  p29_lab_data:
