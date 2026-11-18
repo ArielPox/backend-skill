@@ -11,9 +11,9 @@
 
 ## 实验顺序
 
-- [实验01-镜像与容器基础](./实验01-镜像与容器基础.md)
-- [实验02-数据卷Volume](./实验02-数据卷Volume.md)
-- [实验03-Dockerfile自定义镜像](./实验03-Dockerfile自定义镜像.md)
-- [实验04-DockerCompose多容器编排](./实验04-DockerCompose多容器编排.md)
-- [实验05-自定义Docker网络](./实验05-自定义Docker网络.md)
-- [实验06-综合实践留言板](./实验06-综合实践留言板.md)
+- [实验01-镜像与容器基础](./lab-01-image-and-container-basics.md)
+- [实验02-数据卷Volume](./lab-02-volumes.md)
+- [实验03-Dockerfile自定义镜像](./lab-03-custom-images-with-dockerfile.md)
+- [实验04-DockerCompose多容器编排](./lab-04-multi-container-orchestration-with-compose.md)
+- [实验05-自定义Docker网络](./lab-05-custom-docker-network.md)
+- [实验06-综合实践留言板](./lab-06-message-board-project.md)

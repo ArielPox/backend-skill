@@ -14,17 +14,17 @@
 1. 读取本周期所有源记录，检查日期、完成状态、得分、错题、参考答案和实操结果。
 2. 生成上一级记录，保留日期范围、得分、掌握点、薄弱点、典型错题、实操证据和下一周期计划。
 3. 核对汇总文件已经覆盖全部源文件，且文件能够重新读取。
-4. 更新 `汇总索引.md`。
+4. 更新 `aggregation-index.md`。
 5. 删除已经汇总的源记录。
 
 未完成批改的每日记录可以进入待完成周记录，但在正式批改并重新汇总前不删除。
 
 ## 文件命名
 
-- 周记录使用 `学习周-NNN-开始日期至结束日期.md`。
-- 月记录使用 `学习月-NNN-开始日期至结束日期.md`。
-- 季度记录使用 `学习季度-NNN-开始日期至结束日期.md`。
-- 年记录使用 `学习年-NNN-开始日期至结束日期.md`。
+- 周记录使用 `learning-week-NNN-YYYY-MM-DD-to-YYYY-MM-DD.md`。
+- 月记录使用 `learning-month-NNN-YYYY-MM-DD-to-YYYY-MM-DD.md`。
+- 季度记录使用 `learning-quarter-NNN-YYYY-MM-DD-to-YYYY-MM-DD.md`。
+- 年记录使用 `learning-year-NNN-YYYY-MM-DD-to-YYYY-MM-DD.md`。
 
 ## 周记录最低内容
 

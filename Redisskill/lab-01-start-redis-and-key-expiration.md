@@ -83,4 +83,4 @@ QUIT
 | `GET` 提示不是 PowerShell 命令 | 先进入交互式 `redis-cli`；确认终端出现 Redis 提示符再输入 |
 | 服务未运行或反复退出 | 在 PowerShell 执行 `docker compose logs --tail 30 redis`，查看第一条启动错误 |
 
-完成后，在 [实验笔记](./实验笔记/README.md) 里新建本课记录，记下你的 `PONG`、心跳过期前后两组输出，以及自测的实测结果。
+完成后，在 [实验笔记](./lab-notes/README.md) 里新建本课记录，记下你的 `PONG`、心跳过期前后两组输出，以及自测的实测结果。
