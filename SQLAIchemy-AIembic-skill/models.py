@@ -1,7 +1,15 @@
 from sqlalchemy import ForeignKey, String, UniqueConstraint
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 from datetime import datetime
-from sqlalchemy import DateTime, ForeignKey, String, UniqueConstraint, func
+from sqlalchemy import (
+    DateTime,
+    ForeignKey,
+    Index,
+    String,
+    Text,
+    UniqueConstraint,
+    func,
+)
 
 
 class Base(DeclarativeBase):
@@ -32,3 +40,35 @@ class Device(Base):
         server_default=func.now(),
         nullable=False,
     )
+
+
+class Alarm(Base):
+    __tablename__ = "alarms"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    device_id: Mapped[int] = mapped_column(
+        ForeignKey("devices.id"),
+        nullable=False,
+    )
+    status: Mapped[str] = mapped_column(
+        String(20),
+        nullable=False,
+    )
+    message: Mapped[str] = mapped_column(
+        Text,
+        nullable=False,
+    )
+    occurred_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+    )
+
+
+# 前两列服务于等值筛选，后两列服务于时间范围和稳定倒序。
+Index(
+    "ix_alarms_device_status_occurred_id",
+    Alarm.device_id,
+    Alarm.status,
+    Alarm.occurred_at.desc(),
+    Alarm.id.desc(),
+)
