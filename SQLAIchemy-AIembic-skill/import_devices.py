@@ -1,4 +1,4 @@
-import os
+from settings import DATABASE_URL
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
@@ -7,7 +7,7 @@ from models import Device, Project
 
 
 def import_project(project_code: str, device_codes: list[str]) -> None:
-    engine = create_engine(os.environ["DATABASE_URL"])
+    engine = create_engine(DATABASE_URL)
 
     with Session(engine) as session, session.begin():
         project = Project(code=project_code, name=project_code)

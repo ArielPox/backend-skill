@@ -40,6 +40,11 @@ class Device(Base):
         server_default=func.now(),
         nullable=False,
     )
+    # 没有可信上报记录时，保留未知状态。
+    last_seen_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True),
+        nullable=True,
+    )
 
 
 class Alarm(Base):

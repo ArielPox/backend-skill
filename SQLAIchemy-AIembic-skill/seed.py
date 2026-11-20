@@ -1,4 +1,4 @@
-import os
+from settings import DATABASE_URL
 
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session
@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from models import Device, Project
 
 
-engine = create_engine(os.environ["DATABASE_URL"])
+engine = create_engine(DATABASE_URL)
 
 seed_data = [
     ("A", "项目 A", [("sensor-01", "温度传感器"), ("sensor-02", "湿度传感器")]),

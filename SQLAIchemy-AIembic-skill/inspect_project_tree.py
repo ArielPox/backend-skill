@@ -1,4 +1,4 @@
-import os
+from settings import DATABASE_URL
 
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session, selectinload
@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session, selectinload
 from models import Project
 
 
-engine = create_engine(os.environ["DATABASE_URL"], echo=True)
+engine = create_engine(DATABASE_URL, echo=True)
 
 with Session(engine) as session:
     stmt = select(Project).options(selectinload(Project.devices)).order_by(Project.id)

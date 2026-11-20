@@ -1,4 +1,4 @@
-import os
+from settings import DATABASE_URL
 from datetime import datetime, timedelta, timezone
 
 from sqlalchemy import create_engine, delete, select
@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 from models import Alarm, Device
 
 
-engine = create_engine(os.environ["DATABASE_URL"])
+engine = create_engine(DATABASE_URL)
 
 # 使用固定基准时间，使每次生成的数据范围一致，便于对比执行计划。
 base_time = datetime(2026, 1, 1, tzinfo=timezone.utc)
