@@ -22,6 +22,11 @@ class Project(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     code: Mapped[str] = mapped_column(String(50), unique=True)
     name: Mapped[str] = mapped_column(String(100))
+    # 可选的项目描述，与项目描述迁移保持一致。
+    description: Mapped[str | None] = mapped_column(
+        Text,
+        nullable=True,
+    )
     devices: Mapped[list["Device"]] = relationship()
 
 
@@ -35,6 +40,11 @@ class Device(Base):
     project_id: Mapped[int] = mapped_column(ForeignKey("projects.id"))
     code: Mapped[str] = mapped_column(String(50))
     name: Mapped[str] = mapped_column(String(100))
+    # 可选的设备安装位置，与设备位置迁移保持一致。
+    location: Mapped[str | None] = mapped_column(
+        String(100),
+        nullable=True,
+    )
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         server_default=func.now(),
