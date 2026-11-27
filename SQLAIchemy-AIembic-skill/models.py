@@ -87,3 +87,30 @@ Index(
     Alarm.occurred_at.desc(),
     Alarm.id.desc(),
 )
+
+
+class Role(Base):
+    __tablename__ = "roles"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    code: Mapped[str] = mapped_column(String(50), unique=True)
+    name: Mapped[str] = mapped_column(String(100))
+
+    # 通过 role.users 访问这个角色下的用户。
+    users: Mapped[list["User"]] = relationship(back_populates="role")
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    username: Mapped[str] = mapped_column(String(100), unique=True)
+
+    # 外键约束确保引用的角色存在。
+    role_id: Mapped[int] = mapped_column(
+        ForeignKey("roles.id"),
+        nullable=False,
+    )
+
+    # 与 Role.users 配对，表达同一组关联。
+    role: Mapped["Role"] = relationship(back_populates="users")

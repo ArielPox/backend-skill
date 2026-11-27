@@ -88,3 +88,35 @@
 - [SQLAlchemy 2.0 Session Basics](https://docs.sqlalchemy.org/en/20/orm/session_basics.html)
 - [Alembic 自动生成迁移及检测范围](https://alembic.sqlalchemy.org/en/latest/autogenerate.html)
 - [PostgreSQL 执行计划](https://www.postgresql.org/docs/current/using-explain.html)
+
+## 教学实验脚本编号
+
+按教学创建顺序排列，文件创建时间用于核对先后。独立实验脚本采用 c1-、c2- 等连续前缀，后续新实验从 c26- 继续编号。models.py、settings.py、api.py、import_devices.py 作为共用模块和服务入口使用原名；Alembic 迁移文件继续使用版本号命名。
+
+| 序号 | 实验脚本 |
+|---|---|
+| 1 | [c1-seed.py](./c1-seed.py) |
+| 2 | [c2-split_transaction.py](./c2-split_transaction.py) |
+| 3 | [c3-inspect_project_tree.py](./c3-inspect_project_tree.py) |
+| 4 | [c4-seed_alarms.py](./c4-seed_alarms.py) |
+| 5 | [c5-check_optional_last_seen.py](./c5-check_optional_last_seen.py) |
+| 6 | [c6-manual.py](./c6-manual.py) |
+| 7 | [c7-preview_last_seen_backfill.py](./c7-preview_last_seen_backfill.py) |
+| 8 | [c8-backfill_last_seen_batches.py](./c8-backfill_last_seen_batches.py) |
+| 9 | [c9-check_required_column.py](./c9-check_required_column.py) |
+| 10 | [c10-check_migration_state.py](./c10-check_migration_state.py) |
+| 11 | [c11-create_parallel_migrations.py](./c11-create_parallel_migrations.py) |
+| 12 | [c12-merge_parallel_migrations.py](./c12-merge_parallel_migrations.py) |
+| 13 | [c13-upgrade_merged_migrations.py](./c13-upgrade_merged_migrations.py) |
+| 14 | [c14-downgrade_merge_only.py](./c14-downgrade_merge_only.py) |
+| 15 | [c15-check_merge_downgrade.py](./c15-check_merge_downgrade.py) |
+| 16 | [c16-prepare_rollback_demo.py](./c16-prepare_rollback_demo.py) |
+| 17 | [c17-seed_rollback_demo.py](./c17-seed_rollback_demo.py) |
+| 18 | [c18-downgrade_demo_columns.py](./c18-downgrade_demo_columns.py) |
+| 19 | [c19-upgrade_demo_verify_values.py](./c19-upgrade_demo_verify_values.py) |
+| 20 | [c20-upgrade_from_branch_a.py](./c20-upgrade_from_branch_a.py) |
+| 21 | [c21-upgrade_from_branch_b.py](./c21-upgrade_from_branch_b.py) |
+| 22 | [c22-check_migration_conflict.py](./c22-check_migration_conflict.py) |
+| 23 | [c23-check_old_app_compatibility.py](./c23-check_old_app_compatibility.py) |
+| 24 | [c24-check_handover_baseline.py](./c24-check_handover_baseline.py) |
+| 25 | [c25-run_api.py](./c25-run_api.py) |

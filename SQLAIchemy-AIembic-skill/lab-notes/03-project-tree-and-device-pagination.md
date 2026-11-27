@@ -4,7 +4,7 @@
 
 默认延迟加载先查项目，再为每个项目查设备。即使项目没有设备，第一次访问集合也需要查询。用 `selectinload(Project.devices)` 后，本课小数据集预期只有两条业务 SELECT，一条查项目，一条按项目 ID 批量查设备。没有设备的项目序列化为 `devices: []`。
 
-在已设置 DATABASE_URL 的课程 CMD 中运行 `python inspect_project_tree.py`，用 `echo=True` 比较更改前后的 SELECT 数。用 `python -m uvicorn api:app --host 127.0.0.1 --port 8000` 启动服务，打开 `GET /projects/tree` 验证项目与设备归属。
+在已设置 DATABASE_URL 的课程 CMD 中运行 `python c3-inspect_project_tree.py`，用 `echo=True` 比较更改前后的 SELECT 数。用 `python -m uvicorn api:app --host 127.0.0.1 --port 8000` 启动服务，打开 `GET /projects/tree` 验证项目与设备归属。
 
 ## 设备分页
 

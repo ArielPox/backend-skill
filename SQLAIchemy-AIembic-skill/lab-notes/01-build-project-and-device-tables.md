@@ -25,7 +25,7 @@
 | 对照实验 | 将 target_metadata 设为 MetaData()，运行 python -m alembic revision --autogenerate -m "demo empty metadata" | 空库与空表清单相同，upgrade() 只有 pass 和注释。审查后删除未执行的演示脚本 |
 | 正式迁移 | 导入 models.Base，将 target_metadata 设为 Base.metadata，再运行 python -m alembic revision --autogenerate -m "create projects and devices" | 先建 projects，再建 devices，核对主键、外键和唯一约束 |
 | 执行迁移 | python -m alembic upgrade head | 出现 projects、devices、alembic_version |
-| 重跑种子 | python seed.py，查行数后再运行一次并复查 | 两次均为 2 个项目、3 台设备 |
+| 重跑种子 | python c1-seed.py，查行数后再运行一次并复查 | 两次均为 2 个项目、3 台设备 |
 | 复现 | 创建 p29_lab_repro，确认是空库，切换 DATABASE_URL 后执行 upgrade 和 seed | 迁移版本一致，样例行数一致 |
 
 在指定库核对行数：

@@ -28,7 +28,7 @@ flowchart LR
 | 核对迁移 | `python -m alembic current` | 34bc355690e6 (head) |
 | 正常导入 | `python import_devices.py` | TX-OK 和两台设备一起提交 |
 | 单事务失败 | `python -c "from import_devices import import_project; import_project('TX-FAIL', ['sensor-01', 'sensor-01'])"` | 设备唯一约束报错，TX-FAIL 查询返回 0 行 |
-| 分事务对照 | `python split_transaction.py` | 设备事务失败，TX-SPLIT 留下 1 行，设备编码为 NULL |
+| 分事务对照 | `python c2-split_transaction.py` | 设备事务失败，TX-SPLIT 留下 1 行，设备编码为 NULL |
 | 修正后重试 | `python -c "from import_devices import import_project; import_project('TX-FAIL', ['sensor-01', 'sensor-02'])"` | 同一项目编码成功提交两台设备 |
 | 启动 HTTP 服务 | `python -m uvicorn api:app --host 127.0.0.1 --port 8000` | 服务启动 |
 | 正常 HTTP 请求 | POST /projects/import，HTTP-OK，两种设备编码 | 201 Created |

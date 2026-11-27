@@ -55,8 +55,8 @@
 
 ## 实验顺序与预期
 
-1. check_optional_last_seen.py 使用原有导入函数创建项目和设备，检查新字段为 None。这项测试覆盖当前代码中的原有导入函数，完整旧应用版本的冒烟测试仍待验证。
-2. preview_last_seen_backfill.py 取前两台设备，按设备汇总模拟记录中的最大时间。
+1. c5-check_optional_last_seen.py 使用原有导入函数创建项目和设备，检查新字段为 None。这项测试覆盖当前代码中的原有导入函数，完整旧应用版本的冒烟测试仍待验证。
+2. c7-preview_last_seen_backfill.py 取前两台设备，按设备汇总模拟记录中的最大时间。
 3. 初次回填预期更新 2 台，再次运行预期更新 0 台。
 4. 来源改成较早时间，预期更新 0 台，原有值保留。
 5. 设备 1 来源改成 2026-01-05 12:00 UTC，设备 2 继续使用较早记录，预期更新 1 台；再跑更新 0 台。
@@ -69,8 +69,8 @@
 
 - models.py 定义字段及其可空性。
 - migrations/versions/ba0b8f64f297_add_device_last_seen_at.py 定义结构变更。
-- preview_last_seen_backfill.py 演练来源汇总与单事务回填。
-- backfill_last_seen_batches.py 演练分批提交、故障和重跑。
+- c7-preview_last_seen_backfill.py 演练来源汇总与单事务回填。
+- c8-backfill_last_seen_batches.py 演练分批提交、故障和重跑。
 
 最终分批脚本将以下条件放入 UPDATE 的 WHERE 中。
 
@@ -113,11 +113,11 @@
 - 收集最终脚本重复运行时两批更新数量及查询结果。
 - 核对升级前后行数、Alembic 实际版本以及新应用对未知时间的输出。
 - 完成旧应用版本的兼容性验证。
-- 独立必填字段的临时表实验已写入 check_required_column.py，实际输出待收集。课程计划中的隔离数据库副本与迁移版本失败检查仍待进行。last_seen_at 保持可空。
+- 独立必填字段的临时表实验已写入 c9-check_required_column.py，实际输出待收集。课程计划中的隔离数据库副本与迁移版本失败检查仍待进行。last_seen_at 保持可空。
 
 ## 独立必填字段的失败与修复实验
 
-已读取 check_required_column.py，确认包含下列完整流程。该实验使用事务结束时清理的临时表 lab_devices，登记来源字段为 registration_source。约定两条模拟记录均来自旧系统导入。
+已读取 c9-check_required_column.py，确认包含下列完整流程。该实验使用事务结束时清理的临时表 lab_devices，登记来源字段为 registration_source。约定两条模拟记录均来自旧系统导入。
 
 1. 创建临时表，插入 sensor-01 和 sensor-02。
 2. 在保存点内直接添加 TEXT NOT NULL 列，预期得到 SQLSTATE 23502。
@@ -126,7 +126,7 @@
 5. 查询剩余空值，要求为 0，再执行 SET NOT NULL。
 6. 在保存点内尝试插入来源为 NULL 的第三条记录，预期再次得到 23502，验证约束执行。
 
-在 VS Code 中选择项目 .venv，打开 check_required_column.py，点击运行 Python 文件。预期末尾输出为“写入空来源被拒绝，非空约束验收通过”。尚未收到该输出，脚本内容检查已经完成。本次整理没有运行脚本或查询数据库。
+在 VS Code 中选择项目 .venv，打开 c9-check_required_column.py，点击运行 Python 文件。预期末尾输出为“写入空来源被拒绝，非空约束验收通过”。尚未收到该输出，脚本内容检查已经完成。本次整理没有运行脚本或查询数据库。
 
 该实验把全部动作放在一个外层事务中。实际分阶段发布还需要在收紧约束前，确保应用写入逻辑已经提供登记来源。
 
