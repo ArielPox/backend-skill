@@ -2,6 +2,9 @@
 
 沿用 P29 的项目、设备和告警场景，对接现有 FastAPI 接手路线。已有路由和鉴权基础时，可用对应验收快速确认进度。
 
+七课的讲解、操作、自测和验收集中在 [完整课件](./lab-notes/courseware.md)。每课完成后把实际输出和排错过程另存于 `lab-notes`。
+新增或调整课时，同步更新这份课件中的对应章节。
+
 [FastAPI 后端接手学习方案](../FastAPI-backend.md) · [数据库课程计划](../SQLAIchemy-AIembic-skill/course-plan.md)
 
 ## 动手实验教学约定
